@@ -11,32 +11,45 @@ public class Libreria {
     private Scanner scanner = new Scanner(System.in);
 
     public void iniciar() {
+        // Variable para controlar el bucle
+        boolean continuar=true;
+        while (continuar){
+            // Menú principal
+            System.out.println("Bienvenido a la Librería");
+            System.out.println("1. Añadir Libro");
+            System.out.println("2. Buscar Libro");
+            System.out.println("3. Registrar Venta");
+            System.out.println("4. Salir");
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar buffer
 
-        // Menú principal
-        System.out.println("Bienvenido a la Librería");
-        System.out.println("1. Añadir Libro");
-        System.out.println("2. Buscar Libro");
-        System.out.println("3. Registrar Venta");
-        System.out.println("4. Salir");
-        int opcion = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+            switch (opcion) {
+                case 1:
+                    añadirLibro();
+                    break;
+                case 2:
+                    buscarLibro();
+                    break;
+                case 3:
+                    registrarVenta();
+                    break;
+                case 4:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
 
-        switch (opcion) {
-            case 1:
-                añadirLibro();
-                break;
-            case 2:
-                buscarLibro();
-                break;
-            case 3:
-                registrarVenta();
-                break;
-            case 4:
+        // Preguntar al usuario si desea continuar (excepto si eligió salir)
+        if (continuar){
+            System.out.print("¿Desea realizar otra operación? (s/n):");
+            String respuesta= scanner.nextLine();
+            if(respuesta.equalsIgnoreCase("n")){
+                continuar=false;
                 System.out.println("Saliendo...");
-                break;
-            default:
-                System.out.println("Opción no válida");
+            }
         }
+    }
     }
 
     private void añadirLibro() {
