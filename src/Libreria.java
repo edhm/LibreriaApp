@@ -20,7 +20,8 @@ public class Libreria {
             System.out.println("2. Buscar Libro");
             System.out.println("3. Registrar Venta");
             System.out.println("4. Filtrar Libros");
-            System.out.println("5. Salir");
+            System.out.println("5. Listado de todos los Libros");
+            System.out.println("6. Salir");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
 
@@ -38,8 +39,10 @@ public class Libreria {
                     filtrarLibros();
                     break;
                 case 5:
-                    System.out.println("Saliendo...");
+                    listarLibros();
                     break;
+                case 6:
+                    System.out.println("Saliendo ...");
                 default:
                     System.out.println("Opción no válida,\nIntnente nuevamente");
             }
@@ -145,6 +148,14 @@ public class Libreria {
                         .forEach(System.out::println);
             default:
                 System.out.println("Opción no valida.");
+        }
+    }
+    private void listarLibros(){
+        if (libros.isEmpty()){
+            System.out.println("No hay libros registrados en el sistema.");
+        }else{
+            System.out.println("listado de libros:");
+            libros.forEach(libro-> System.out.println(libro));
         }
     }
 }
