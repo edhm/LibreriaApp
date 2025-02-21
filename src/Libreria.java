@@ -150,12 +150,24 @@ public class Libreria {
                 System.out.println("Opción no valida.");
         }
     }
-    private void listarLibros(){
-        if (libros.isEmpty()){
+    private void listarLibros() {
+        if (libros.isEmpty()) {
             System.out.println("No hay libros registrados en el sistema.");
-        }else{
-            System.out.println("listado de libros:");
-            libros.forEach(libro-> System.out.println(libro));
+        } else {
+            System.out.println("Listado de libros:");
+            System.out.println("+----+------------------------+----------------------+-------------------+--------+-------+");
+            System.out.println("| ID | Título                 | Autor                | Categoría         | Precio | Stock |");
+            System.out.println("+----+------------------------+----------------------+-------------------+--------+-------+");
+            libros.forEach(libro -> {
+                System.out.printf("| %-2d | %-22s | %-20s | %-17s | %-6.2f | %-5d |\n",
+                        libro.getId(),
+                        libro.getTitulo(),
+                        libro.getAutor().getNombre(),
+                        libro.getCategoria().getNombre(),
+                        libro.getPrecio(),
+                        libro.getStock());
+            });
+            System.out.println("+----+------------------------+----------------------+-------------------+--------+-------+");
         }
     }
 }
