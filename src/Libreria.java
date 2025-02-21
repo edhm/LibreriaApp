@@ -19,7 +19,8 @@ public class Libreria {
             System.out.println("1. Añadir Libro");
             System.out.println("2. Buscar Libro");
             System.out.println("3. Registrar Venta");
-            System.out.println("4. Salir");
+            System.out.println("4. Filtrar Libros");
+            System.out.println("5. Salir");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
 
@@ -34,10 +35,13 @@ public class Libreria {
                     registrarVenta();
                     break;
                 case 4:
+                    filtrarLibros();
+                    break;
+                case 5:
                     System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opción no válida");
+                    System.out.println("Opción no válida,\nIntnente nuevamente");
             }
 
         // Preguntar al usuario si desea continuar (excepto si eligió salir)
@@ -108,6 +112,39 @@ public class Libreria {
             System.out.println("Venta registrada.");
         } else {
             System.out.println("No hay suficiente stock.");
+        }
+    }
+    private void filtrarLibros(){
+        System.out.println("Filrar libros por:");
+        System.out.println("1. Título");
+        System.out.println("2. Autor");
+        System.out.println("3. Categoría");
+        System.out.println("Seleccione una opción");
+        int opcionFiltro= scanner.nextInt();
+
+        switch (opcionFiltro){
+            case 1:
+                System.out.println("Ingrese el Título a buscar");
+                String titulo= scanner.nextLine();
+                libros.stream()
+                        .filter(libro ->libro.getTitulo().equalsIgnoreCase(titulo))
+                        .forEach(System.out::println);
+                break;
+            case 2:
+                System.out.println("Ingrese el nombre del autor");
+                String nombreAutor=scanner.nextLine();
+                libros.stream()
+                        .filter(libro->libro.getAutor().getNombre().equalsIgnoreCase(nombreAutor))
+                        .forEach(System.out::println);
+                break;
+            case 3:
+                System.out.println("Ingrese el nombre de la categoría");
+                String nombreCategoria = scanner.nextLine();
+                libros.stream()
+                        .filter(libro->libro.getCategoria().getNombre().equalsIgnoreCase(nombreCategoria))
+                        .forEach(System.out::println);
+            default:
+                System.out.println("Opción no valida.");
         }
     }
 }
