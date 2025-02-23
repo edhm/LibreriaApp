@@ -65,13 +65,7 @@ private int stock;
 
     @Override
     public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", titulo='" + titulo + '\'' +
-                ", autor=" + autor +
-                ", categoria=" + categoria +
-                ", precio=" + precio +
-                ", stock=" + stock +
-                '}';
+        return String.format("| %-2d | %-22s | %-20s | %-17s | $%-6.2f | %-5d |",
+                id, titulo, autor.getNombre(), categoria.getNombre(), precio, stock);
     }
 }
